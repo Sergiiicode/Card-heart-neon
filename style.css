@@ -1,0 +1,111 @@
+:root {
+  --color-heart: #8ae3ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #141414;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 2000px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  height: 450px;
+  width: 350px;
+  background: rgb(27, 27, 27);
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.border {
+  height: 460px;
+  width: 360px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    140deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(141, 43, 171, 1) 0%,
+    rgba(149, 87, 207, 1) 43%,
+    rgba(123, 109, 215, 1) 66%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border-radius: 8px;
+  position: absolute;
+  z-index: -1;
+  animation: rotate 2.5s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.heart {
+  width: 115px;
+  height: 115px;
+  position: relative;
+  background: var(--color-heart);
+  box-shadow: -8px -10px 100px var(--color-heart);
+  animation: animate 0.6s linear infinite;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 1s;
+}
+
+.heart::before {
+  content: "";
+  width: 115px;
+  height: 115px;
+  position: absolute;
+  border-radius: 50%;
+  top: -60px;
+  background: var(--color-heart);
+  box-shadow: -8px -8px 100px var(--color-heart);
+}
+
+.heart::after {
+  content: "";
+  left: -60px;
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  position: absolute;
+  background: var(--color-heart);
+  box-shadow: -8px -8px 100px var(--color-heart);
+}
+
+.heart:hover {
+  opacity: 1;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(43deg) scale(1.1);
+  }
+
+  50% {
+    transform: rotate(43deg) scale(1);
+  }
+
+  100% {
+    transform: rotate(43deg) scale(1.1);
+  }
+}
